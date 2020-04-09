@@ -3,8 +3,605 @@
 <head>
     <meta charset="UTF-8">
     <title>WebAssembly реферат</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
 </head>
 <body>
+<div id="sidebar" class="w3-container w3-theme">
 
+    <div id="menu-item-1" class="w3-container w3-theme menu-item">
+        <a href="#section1">Какво е WebAssembly? </a>
+    </div>
+
+    <div id="menu-item-2" class="w3-container w3-theme menu-item">
+        <a href="#section2">Как WebAssembly се вписва в Уеб платформата? </a>
+    </div>
+
+    <div id="menu-item-3" class="w3-container w3-theme menu-item">
+        <a href="#section3">Цели</a>
+    </div>
+
+    <div id="menu-item-4" class="w3-container w3-theme menu-item">
+        <a href="#section4">Основни концепции</a>
+    </div>
+
+    <div id="menu-item-5" class="w3-container w3-theme menu-item">
+        <a href="#section5">Как да използвам WebAssembly в моето приложение?</a>
+    </div>
+
+    <div id="menu-item-6" class="w3-container w3-theme menu-item">
+        <a href="#section6">Демо</a>
+    </div>
+</div>
+<header class="w3-container w3-theme">
+    <h1>WebAssembly - основи и примери</h1>
+</header>
+<article class="w3-container w3-theme-l4">
+    <section class="w3-panel" id="section1">
+        <h2>Какво е WebAssembly ?</h2>
+        <p>WebAssembly (накратко Wasm) е <span class="italic">безопасен, portable, език от ниско ниво</span>, направен с
+            цел ефикастно изпълнение
+            и компактно репрезентиране. Главната му цел е да постигне висока производителност при Уеб приложения,
+            без да прави някакви специфични за Уеб предположения, или пък да предлага специфични за Уеб функционалности,
+            с цел да може да бъде използван в други среди.
+            WebAssembly е отворен стандарт, разработван от <a href="https://www.w3.org/community/webassembly/"> W3C
+                Community Group</a>.<a href="#citation1" class="citation">[1]</a></p>
+
+    </section>
+
+    <section class="w3-panel">
+        <p>WebAssembly е голяма стъпка напред за уеб платформата — предоставя начин да се изпълнява код написан на различни
+            езици върху уеб с почти никакво забавяне в скоростта, с клиентски приложения вървящи върху уеб.</p>
+
+        <p>WebAssembly е създаден да допълва и да върви заедно с JavaScript — чрез използване на WebAssembly JavaScript
+        API, може да се зареждат WebAssembly модули в JavaScript приложение и да се споделят функционалности между двата
+        езика. Това позволява да се възползвате от производителността и силата на WebAssembly и експресивността и
+        гъвкавостта на JavaScript в едно и също приложение, дори и да не знаете как да пишете WebAssembly код.
+            <a href="#citation2" class="citation">[2]</a></p>
+        <p>WebAssembly е нов тип код, който може да бъде изпълняван в съвременните уеб браузъри, и предлага нови
+        функционалности и голям напредък в производителността. Езикът няма за цел да бъде писан директно, а да бъде като
+            ефективен продукт от компилацията на други езици от ниско ниво като C, C++, Rust и други.</p>
+    </section>
+
+    <section class="w3-panel" id="section2">
+        <h2>Как WebAssembly се вписва в Уеб платформата?</h2>
+        <p>
+            Уеб платформата може да бъде представена на две части:
+        <ul>
+            <li>Виртуална машина, която изъплнява Уеб кода - например JavaScript кода, който захранва вашите
+                приложения.
+            </li>
+            <li>
+                Набор от <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank"> Web API-та</a>,
+                които Уеб приложението може да извиква с цел контрол на уеб браузъра/устройствата.
+                (
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model" target="_blank">DOM</a>,
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model" target="_blank">CSSOM</a>,
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API" target="_blank">WebGL</a>,
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API">IndexedDB</a>,
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a>,
+                и други).
+            </li>
+        </ul>
+        </p>
+        <p>Исторически, виртуалната машина е имала възможно да работи само с JavaScript. Това е добра новина за
+            разработчиците на WebAssembly, защото JavaScript е достатъчно мощен да реши повечето проблеми, с които се
+            сблъскваме всекидевно в мрежата. За сметка на това, обаче, JavaScript има проблеми със производителността,
+            например при 3D игри, виртуална и добавена реалност, компютърно зрение, обработка на изображения/видео и
+            други видове работа, които изискват максимална производителност.</p>
+        <p>Също така, ресурсите които са нужни за изтегляне, обработка и компилиране на големи JavaScript приложения мже
+            да се окажат непостижими за някои платформи - например мобилинте.
+
+        </p>
+        <p>WebAssembly е различен от JavaScript, но той няма за цел да бъде негов заместител. Вместо това, WebAssembly
+            има за цел да бъде като допълнение към JavaScript и да работи паралелно с него. Това позволява на
+            разработчиците да се възползват от предимствата на двата езика:</p>
+
+        <ul>
+            <li>- JavaScript е език от високо ниво, гъвкав и достатъчно експресивен, че да се пишат уеб приложения. Има
+                много предимства - динамично типизиран е, интерпретируем е и има голяма екосистема, която предлага мощни
+                среди, библиотеки и други инструменти.
+                -
+            </li>
+            <li>WebAssembly е асемблерен език от ниско ниво с компактен бинарен формат, който върви с почти максимална
+                скорост и предлага възможността на други езици от ниско ниво (като C++ и Rust) да бъдат компилирани до
+                WebAssembly и да се изпълняват на Уеб платформата.
+            </li>
+        </ul>
+
+        <p>С идването на WebAssmebly в браузърите, виртуалната машина ще зарежда и изпълнява два типа код - JavaScript И
+            WebAssembly.</p>
+        <p>Чрез <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly">WebAssembly
+            JavaScript API</a>, функциите от WebAssembly се "обвиват" в JavaScript функции, които могат да бъдат
+            извиквани нормално, а WebAssembly може да импортира и да извиква синхронно нормални JavaScript функции.
+            Най-базовата единица WebAssembly коде се нарича модул, и тези модули са по много начини симетрични на
+            модулите в ES2015.</p>
+    </section>
+    <section class="w3-panel" id="section3">
+        <h2>Цели</h2>
+        <p>Целите, имани в предвид по време на разработката на WebAsssembly са:</p>
+        <ul>
+            <li>Бърза, безопасна, и преносима семантика:
+                <ul>
+                    <li><span class="bold">Бърза</span>: Изпълнява се с почти максимална скорост, използвайки
+                        възможности налични на всички разпространени хардуерни платформи.
+                    </li>
+                    <li><span class="bold">Сигурна</span>: Кодът се валидира и изпълнява изолирана среда, която
+                        предотвратява **data corruption** или пробиви в сигурността.
+                    </li>
+                    <li><span class="bold">Добре дефиниран</span>: Напълно и точно дефинира валидни и точни програми,
+                        заедно с тяхното поведение, по начин, които е лесен за разбиране неформално и формално.
+                    </li>
+                    <li><span class="bold">Хардуерно независим</span>: Напълно и точно дефинира валидни и точни
+                        програми, заедно с тяхното поведение, по начин, които е лесен за разбиране неформално и
+                        формално.
+                    </li>
+                    <li><span class="bold">Езиково независим</span>: Няма значение от езика, програмния модел или
+                        обектовия модел.
+                    </li>
+                    <li><span class="bold">Платформено независим</span>: Може да бъде вграден в браузъри, да се
+                        изпълнява като самостоятелна виртуална машина или интегриран в други среди.
+                    </li>
+                    <li><span class="bold">Отворен</span>: Програмите могат да взаимодействат с тяхната среда чрез прост
+                        и универсален начин.
+                    </li>
+                </ul>
+            </li>
+            <li>Ефикасна и преносима репрезентация:
+                <ul>
+                    <li><span class="bold">Компактен</span>: WebAssembly има бинарен формат, който се предава бързо, тъй
+                        като е по-малък като размер от типичен текст или native кодови формати.
+                    </li>
+                    <li><span class="bold">Модулнен</span>: Програмите могат да бъдат разделени на малки части, които
+                        могат да бъдат предавани, кеширани и използвани поотделно.
+                    </li>
+                    <li><span class="bold">Ефикасен</span>: Могат да бъдат декодирани, валидирани и компилирани на един
+                        път, или чрез just-in-time (JIT), или чрез ahead-of-time (AOT) компилация.
+                    </li>
+                    <li><span class="bold">Поточен</span>: Позволява декодирането, валидацията и компилацията да започне
+                        възможно най-бързо, дори още преди целите данни да са предадени.
+                    </li>
+                    <li><span class="bold">Паралелен</span>: Позволява декодирането, валидацията и компилацията да бъде
+                        разделена на много независими паралелни задачи.
+                    </li>
+                    <li><span class="bold">Преносими</span>: Не разчита на архитектурни предположения, които не са
+                        широко поддържани.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <p>WebAssembly кодът също има за цел да е лесен за инспектиране и отстраняване на грешки, особенно в среди като
+            уеб браузъри.<a href="#citation1" class="citation">[1]</a></p>
+    </section>
+    <section class="w3-panel" id="section4">
+        <h2>Основни концепции</h2>
+        <ul>
+            <li>
+                <span class="bold">Стойности:</span>
+                <p>
+                    WebAssembly поддържа само четири базови типа стойности. Това са цели числа и [IEEE
+                    754-2019](https://ieeexplore.ieee.org/document/8766229) числа, всяко с дължина 32 или 64 бита. 32
+                    битовите цели числа също служат за булеви стойности и за адреси в паметта. Стандартните операции са
+                    възможни върху тези типове, включително и пълната матрица от преобразувания между тях. Няма
+                    разграничение между целочисления тип със знак и без знак. Вместо това, целите числа са
+                    интерпретирани от съответните операции или като такива без знак, или такива със знак.
+                </p>
+            </li>
+            <li>
+                <span class="bold">Инструкции:</span>
+                <p>
+                    Изчислителният модел на WebAssembly е базиран на <span class="italic">стек машина</span>. Кодът се
+                    състои от поредица от
+                    инструкции, които се изпълняват подред. Инструкциите манипулират стойности в имплицитен операндов
+                    стек. Тези инструкции се разделят на два основни категории. <span class="italic">Простите</span>
+                    инструкции изпълняват базови
+                    операции върху данните. Те изкарват аргументи от операндния стек и вкарват резултата в него.
+                    <span class="italic">Контролните</span> инструкции променят контролния поток. Контролният поток е
+                    структуриран, което означава
+                    че той се изразява чрез добре вложени конструкции като блокове, цикли и условни оператори.
+                </p>
+            </li>
+            <li>
+                <span class="bold">Трапове:</span>
+                <p>
+                    В някои случаи, някои инструкции могат да създадат т.нар. трап, от който веднага следва спиране на
+                    изпълнението. Макар и траповете да не могат да бъдат обработвани от WebAssembly, те се препащат към
+                    външната среда, където вече могат да бъдат обработени.
+                </p>
+            </li>
+            <li>
+                <span class="bold">Функции:</span>
+                <p>
+                    Кодът е организиран в отделни функции. Всяка функция приема последователност от стойности като
+                    параметри и връща друга последователност от стойности като резултат. Функциите могат да се извикват
+                    една друга, включително и рекурсивно. В резултат на това, имплицитно се получава стек на
+                    изикванията, който не може да бъде достъпен директно. Функциите също така могат да декларират
+                    локални променливи, които могат да бъдат променяни. Те могат да се използват за виртуални регистри.
+
+
+                </p>
+            </li>
+            <li>
+                <span class="bold">Линейност на паметта:</span>
+                <p>
+                    Линейната памет в памет, която е непрекъсната, променлива и създадена от "сурови" байтове. Такава
+                    памет се създава с начален размер, макар и да може да бъде разширявана динамично. Една програма може
+                    да зарежда и да запазва стойностите в линейната памет, чрез използването на адреси.
+
+                </p>
+            </li>
+            <li>
+                <span class="bold">Модули:</span>
+                <p>Една WebAssembly програма приема формата на модул, който съдържа дефинициите за функции, таблици и
+                    линейна памет, също и постоянни и непостоянни глобални променливи. Други дефиниции могат да бъдат
+                    внесени, чрез посочване на двойка модул-име, и подходящ тип. Всяка дефиниция също може да бъде
+                    изнесени под едно или много имена. Освен дефиниции, модулите могат да дефинират и инициализационни
+                    данни за техните памет или таблици, които приемат формат на сегменти. Също е възможно дефинираното
+                    на *стартова функция*, която се изпълнява автомачино.
+
+
+                </p>
+            </li>
+            <li>
+                <span class="bold">Вграждане:</span>
+                <p>
+                    Една WebAssembly имплементация доста често ще бъде *вградена* в т.нар. "домакинска среда". Тази
+                    среда дефинира как ще се върши зареждането на модулите, как ще се случи "внасянето" и как изнесените
+                    функции ще бъдат достъпвани.
+                </p>
+            </li>
+        </ul>
+        <a href="#citation4" class="citation">[4]</a>
+    </section>
+
+    <section class="w3-panel" id="section5">
+        <h2>Как да използвам WebAssembly в моето приложение?</h2>
+        <p>Екосистемата на WebAssembly все е още е в процес на развитие - с времето ще бъдат добавени още инструменти и
+            библиотеки. В момента, има четири начина да използваме WebAssembly:</p>
+        <ul>
+            <li>"Превеждане" на C/C++ приложение с <a
+                    href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Emscripten" target="_blank">
+                Emscripten </a>.
+            </li>
+            <li>Писане или генериране на WebAssembly директно на ниво на асемблер.</li>
+            <li>Създаване на Rust приложение и задаване на WebAssembly като изход от компилацията.</li>
+            <li>Използвайки <a href="https://docs.assemblyscript.org/" target="_blank"> AssemblyScript</a>, което е
+                близко до TypeScript и се компилира до WebAssembly.
+            </li>
+        </ul>
+
+        <h3>Превод от C/C++</h3>
+        <p>Две от многото възможности за създаване WASM код, са онлайн wasm асемблери или <a
+                href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Emscripten"
+                target="_blank">Emscripten </a>. Има няколко онлайн асемблери:</p>
+        <ul>
+            <li><a href="https://wasdk.github.io/WasmFiddle/" target="_blank">WasmFiddle</a></li>
+            <li><a href="https://anonyco.github.io/WasmFiddlePlusPlus/" target="_blank">WasmFiddle++</a></li>
+            <li><a href="https://mbebenita.github.io/WasmExplorer/" target="_blank">WasmExplorer</a></li>
+        </ul>
+        <p>
+            Те са добри ресурси за хора, които се опитват да открият от къде да започнат с WebAssembly. Проблемът с тях
+            е, че липсват някои инструменти и оптимизациите на Emscripten.
+        </p>
+        <p>
+            Инструментът Emscripten може да вземем почти всякакъв C/C++ код и да го компилира в .wasm модул, както и да
+            създаде необходимия помощен JavaScript код за зареждането и изпълнението на модула, заедно с HTML документ,
+            който да покаже резултата от кода.
+        </p>
+
+
+        <div class="w3-card-4 image-container">
+            <img src="https://mdn.mozillademos.org/files/14647/emscripten-diagram.png" alt="Emscirpten диаграма"/>
+            <div class="w3-container w3-center">
+                <p>Диаграма, показваща процеса на действие на Emscripten</p>
+            </div>
+        </div>
+        <p>На кратко, процесът е следният:</p>
+        <ol>
+            <li>Emscripten подава C/C++ кода към clang+LLVM</li>
+            <li>Emscripten трансформира вече компилирания резултат от clang+LLVM в .wasm файл.</li>
+            <li>WebAssembly не може самостоятелно да достъпва DOM дървото - единствено може да извика JavaScript и да
+                подава цели или дробни числа. Ако искаме WebAssembly да достъпва Уеб API-та, то WebAssembly трябва да
+                извика JavaScript код, който вече да извика съответните Уеб API-та. Emscripten създава необходимия HTML
+                и JavaScript код необходим за това.
+            </li>
+        </ol>
+
+        <p>
+            <span class="bold">Бележка</span>: Има планове за <a
+                href="https://github.com/WebAssembly/gc/blob/master/README.md" target="_blank"> позволяване на
+            WebAssembly да извиква Уеб API-та
+            директно</a>
+        </p>
+
+        <p>
+            Генерирания JavaScript код не е толкова прост. EmScripten имплементира популярни C/C++ библиотеки като
+            <a href="https://en.wikipedia.org/wiki/Simple_DirectMedia_Layer" target="_blank">SDL</a>,
+            <a href="https://en.wikipedia.org/wiki/OpenGL" target="_blank">OpenGL</a> ,
+            <a href="https://en.wikipedia.org/wiki/OpenAL" target="_blank">OpenAL</a> ,
+            и части от <a href="https://en.wikipedia.org/wiki/POSIX" target="_blank"> POSIX</a>. Тези
+            библиотеки са имплементирани за да работят с Web API-та и всяко едно от тях изисква още JavaScript помощен
+            код,
+            за да се свърже WebAssembly с вече съществуващите Web API-та.
+        </p>
+
+        <p>
+            Част от помощния JavaScript код имплементира функционалностите на някои от C/C++ библиотеките. Освен това,
+            този
+            помощен код съдържа и логиката за извикването на съответните WebAssembly JavaScript API-та, които имат за
+            цел да
+            заредят и изпълният съоветния .wasm файл.
+        </p>
+
+        <p>
+            Генерираният HTML документ зарежда помощния JavaScript код и записва стандартния изход върху &lt;textarea&gt;.
+            Ако приложението съдържа и &lt;canvas&gt; елемент, то той е използван за изчертаване.
+            Резултата,
+            който се генерира от Emscripten може да бъде модифициран лесно, с цел да го превърнем в желаното от нас Уеб
+            приложение.
+        </p>
+
+
+        <h3>Писане директно на WebAssembly</h3>
+        <p>
+            Както и "физическия" асемблерен език, WebAssembly има текстово представяне. Може да се напише текстов файл
+            или
+            да се генерира такъв, и след това да се конвертира в изпълнимия формат, с някой от много
+            <a href="https://webassembly.org/getting-started/advanced-tools/" target="_blank">инструменти</a>.
+        </p>
+
+
+        <h3>Създаване на WebAssembly модули, чрез езика Rust</h3>
+        <p>
+            Възможно е използването на Rust код, който да се компилира до WebAssembly, благодарение на работата на Rust
+            WebAssembly работната група. Начални стъпки в това как да се настроят необходимите инструменти, компилиране
+            на
+            проста Rust програма до WebAssembly npm пакет и използването му, може да прочетете повече
+            <a href="https://developer.mozilla.org/en-US/docs/WebAssembly/Rust_to_wasm" target="_blank">тук </a>.
+        </p>
+
+
+        <h3>Използване на AssemblyScript</h3>
+
+        <p>За уеб разработчиците, които искат да пробват WebAssembly, но не искат да учат C или Rust, AssemblyScript е
+            най-добрата алтернатива. Генерира малки пакети, включващи всичко, макар че са по-бавни спрямо C или Rust.
+            <a href="#citation3" class="citation">[3]</a>
+        </p>
+    </section>
+
+    <section class="w3-panel" id="section6">
+        <h2>Демо</h2>
+        <h3>Настройки на Emscripten</h3>
+        <p>Трябва първо да се настрои необходимите инструменти.
+            Свалете Emscripten SDK, следвайки тези <a href="https://emscripten.org/docs/getting_started/downloads.html"
+                                                      target="_blank">инструкции</a>.
+            След като средата е инсталирана, нека разгледаме как може да компилираме C код с Emscripten. Има много
+            различни опции при компилиране, но тук ще разгледаме две:</p>
+        <ul>
+            <li>Компилиране до wasm и създаването на необходимия HTML код, заедно с необходимия помощен JavaScript,
+                необходими за изпълнението на wasm в уеб среда.
+            </li>
+            <li>Компилираме до wasm и създаване само на JavaScript кода.</li>
+        </ul>
+        <p>Ще разгледаме двата варианта по-долу.</p>
+
+        <h3>Създаване на HTML и JavaScript</h3>
+        <p>Това е най-простия случай, където emscripten генерира всичко необходимо за изпълнението на WebAssembly в
+            браузъра.</p>
+        <ol>
+            <li>
+                Първо трябва да имаме C код който да компилираме. Файлът `hello.c` изглежда по следният начин:<br/>
+                <code>
+                    #include &lt;stdio.h&gt; <br/>
+                    int main(int argc, char ** argv) {<br/>
+                    printf("Hello World\n"); <br/>
+                    }<br/>
+                </code>
+            </li>
+            <li>
+                През терминала навигираме до директорията, в която се намира `hello.c` и изпълняваме следната команда:
+                <br/>
+                <code>emcc hello.c -s WASM=1 -o hello.html</code>
+            </li>
+        </ol>
+
+        <p>Опциите, които подаваме са:</p>
+        <ol>
+            <li>-s WASM=1 — Указва, че искаме изхода да е wasm. Ако пропуснем този аргумент, изход ще е asm.js, който е
+                по подразбиране.
+            </li>
+            <li>-o hello.html — Указва, че искаме Emscripten да генерира HTML страница, в която да пуснем нашия код.
+                Освен това, се генерира и помощния JavaScript код.
+            </li>
+        </ol>
+
+        <p>До тук, файловете които трябва да имаме в директорията са:</p>
+        <ul>
+            <li>Бинарния wasm модул(`hello.wasm`)</li>
+            <li>JavaScript файл, съдържащ помощия код, които превежда между C функциите и JavaScript/WebAssembly
+                (`hello.js`)
+            </li>
+            <li>HTML файл, който да зарежда, компилира и инстанцира wasm кода, и да визуализира изхода върху браузъра
+                (`hello.html`)
+            </li>
+        </ul>
+
+        <h3>Изпълнение на кода</h3>
+        <p>
+            Единственото, което трябва да се направи сега, е да заредим получения `hello.html` файл, в браузър, който
+            поддържа WebAssembly. Тази функционалност е включена по подразбиране в следните браузъри: Firefox 52+ и
+            Chrome 57+/най-нова версия на Opera (възможно е да се изпълнява wasm код в Firefox 47+ чрез включване на
+            `javascript.options.wasm` флага в *about:config*, или в Chrome (51+) и Opera (38+) чрез *chrome://flags* и
+            включването на *Experimental WebAssembly* флага.)
+        </p>
+        <p>Ако всичко е проработило по план, би трябвало на екрана да се появи "Hello world" !</p>
+
+
+        <h3>Използване на собствен HTML шаблон</h3>
+        <p>Можем да използваме собствен HTML шаблон. Това става по следният начин:</p>
+
+        <ol>
+            <li>
+                В нова директория, създаваме файл `hello2.c` със следния код в него:
+                <code>
+                    <pre>
+                        #include &lt;stdio.h&gt;
+                        int main(int argc, char ** argv) {
+                            printf("Hello World\n");
+                        }
+                    </pre>
+                </code>
+            </li>
+            <li>Потърсете файла `shell_minimal.html`, който се намира в папката emsdk. Копирайте го в под-директория с
+                име `html_template` във вашата нова директория
+            </li>
+            <li>
+                От прозореца, в който е отворен Emscripten средата, навигирайте към новосъздадената директория и
+                изъплнете следната команда:
+                <code>emcc -o hello2.html hello2.c -O3 -s WASM=1 --shell-file html_template/shell_minimal.html</code>
+                <p>Параметрите се различват малко спрямо предишния път:</p>
+
+                <ul>
+                    <li>Указваме `-o hello2.html`,което значи че компилатора все още ще ни генерира необходимия HTML и
+                        JavaScript код.
+                    </li>
+                    <li>Също сме специфицирали `--shell-file html_template/shell_minimal.html` — това показва пътя към
+                        HTML шаблона, който ще бъде използван за създаването на HTML файла за стартирането на нашия
+                        пример.
+                    </li>
+                </ul>
+            </li>
+            <li>Остава само да пуснем примера. Стартираме `hello2.html` в браузъра.</li>
+        </ol>
+
+        <h3>Извикване на функции дефинирани в C</h3>
+        <p>
+            Ако имаме функция, дефинирана в C кода ни, която искаме да извикаме от JavaScript, можем да използваме
+            `ccall()` функцията от Emscripten, заедно с `EMSCRIPTEN_KEEPALIVE` декларацията.
+            Ще направим файл`hello3.c` в нова директория:
+        </p>
+
+        <code>
+            #include &lt;stdio.h&gt;
+            #include &lt;emscripten/emscripten.h&gt;
+
+            int main(int argc, char ** argv) {
+            printf("Hello World\n");
+            }
+
+            #ifdef __cplusplus
+            extern "C" {
+            #endif
+
+            void EMSCRIPTEN_KEEPALIVE myFunction(int argc, char ** argv) {
+            printf("MyFunction Called\n");
+            }
+
+            #ifdef __cplusplus
+            }
+            #endif
+        </code>
+
+
+        <p>
+            По подразбиране, генерираният от Emscripten код винаги извиква `main()` функцията, а другите функции се
+            игнорират. Чрез използването на `EMSCRIPTEN_KEEPALIVE` пред името на функция, позволява на тази функция да
+            не бъде игнорирана. Също така е необходимо внасянето на библиотеката `emscripten.h`, в която се намира
+            `EMSCRIPTEN_KEEPALIVE`.
+        </p>
+        <p>
+            Сега добавяме `html_template/shell_minimal.html` в текущата директория, за удобство.
+        </p>
+        <p>
+            Нека изпълним компилационната стъпка отново. От директорията в която сме, компилираме нашия C код със
+            следата команда:
+        </p>
+
+        <code>
+            emcc -o hello3.html hello3.c -O3 -s WASM=1 --shell-file html_template/shell_minimal.html -s
+            NO_EXIT_RUNTIME=1 -s "EXTRA_EXPORTED_RUNTIME_METHODS=['ccall']"
+        </code>
+
+
+        <p>Ако заредим този пример в браузъра, ще видим същото нещо като преди.</p>
+
+        <p>Сега трябва да изпълним нашата нова функция `myFunction()` от JavaScript. Първо, отваряме `hello3.html` файл
+            в текстов редактор. Добавяме следният `button` елемент.</p>
+
+        <code>
+            &lt;button class="mybutton"&gt; Run myFunction &lt;/button&gt;
+        </code>
+
+        <p>И съответният JavaScript код: </p>
+
+        <code>
+            <pre>document.querySelector('.mybutton')
+    .addEventListener('click', function() {
+        alert('check console');
+        var result = Module.ccall(
+            'myFunction',	// name of C function
+            null,	// return type
+            null,	// argument types
+            null	// arguments
+        );
+    });</pre>
+        </code>
+
+        <p><a href="#citation5" class="citation">[5]</a></p>
+    </section>
+
+</article>
+<footer class="w3-container w3-theme">
+    Цитати:
+    <ol>
+        <li>
+            <a href="https://webassembly.github.io/spec/core/intro/introduction.html" target="_blank" id="citation1">
+                Editor: Andreas Rossberg
+                Release 1.0 (Draft, Apr 02, 2020)
+                WebAssembly Specification
+            </a>
+        </li>
+        <li>
+            <a href="https://developer.mozilla.org/en-US/docs/WebAssembly" target="_blank" id="citation2">
+                Editor:
+                <a href="https://wiki.developer.mozilla.org/en-US/docs/WebAssembly$history" target="_blank"> MDN
+                    Contributor </a>
+                Last edit: Feb 8, 2020
+            </a>
+        </li>
+        <li>
+            <a href="https://developer.mozilla.org/en-US/docs/WebAssembly/Concepts" target="_blank" id="citation3">
+                Editor:
+                <a href="https://wiki.developer.mozilla.org/en-US/docs/WebAssembly/Concepts$history" target="_blank">
+                    MDN
+                    Contributor </a>
+                Last edit: Dec 23, 2019
+            </a>
+        </li>
+        <li>
+            <a href="https://webassembly.github.io/spec/core/intro/overview.html" target="_blank" id="citation4">
+                Editor: Andreas Rossberg
+                Release 1.0 (Draft, Apr 02, 2020)
+                WebAssembly Specification
+            </a>
+        </li>
+        <li>
+            <a href="https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm" target="_blank" id="citation5">
+                Editor:
+                <a href="https://wiki.developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm$history" target="_blank">
+                    MDN
+                    Contributor </a>
+                Last edit: Oct 24, 2019
+            </a>
+        </li>
+    </ol>
+</footer>
 </body>
 </html>
+<!--<div class="w3-card-4 image-container">
+       <img src="img/img_snowtops.jpg" alt="Alps">
+       <div class="w3-container w3-center">
+           <p>The Italian / Austrian Alps</p>
+       </div>
+   </div>-->

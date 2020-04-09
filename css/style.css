@@ -1,0 +1,103 @@
+body
+{
+    font-family: "Ubuntu", "Segoe UI", Arial, sans-serif;
+}
+.w3-theme-l5 {color:#000 !important; background-color:#f3f4f7 !important}
+.w3-theme-l4 {color:#000 !important; background-color:#d7dbe3 !important}
+.w3-theme-l3 {color:#000 !important; background-color:#b0b6c8 !important}
+.w3-theme-l2 {color:#fff !important; background-color:#8892ac !important}
+.w3-theme-l1 {color:#fff !important; background-color:#636f8e !important}
+.w3-theme-d1 {color:#fff !important; background-color:#40485c !important}
+.w3-theme-d2 {color:#fff !important; background-color:#394052 !important}
+.w3-theme-d3 {color:#fff !important; background-color:#323848 !important}
+.w3-theme-d4 {color:#fff !important; background-color:#2b303d !important}
+.w3-theme-d5 {color:#fff !important; background-color:#242833 !important}
+
+.w3-theme-light {color:#000 !important; background-color:#f3f4f7 !important}
+.w3-theme-dark {color:#fff !important; background-color:#242833 !important}
+.w3-theme-action {color:#fff !important; background-color:#242833 !important}
+
+.w3-theme {color:#fff !important; background-color:#485167 !important}
+.w3-text-theme {color:#485167 !important}
+.w3-border-theme {border-color:#485167 !important}
+
+.w3-hover-theme:hover {color:#fff !important; background-color:#485167 !important}
+.w3-hover-text-theme:hover {color:#485167 !important}
+.w3-hover-border-theme:hover {border-color:#485167 !important}
+
+#sidebar{
+    width:15%;
+    height: 100%;
+    position: fixed;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item
+{
+    width:100%;
+    height: 7.5%;
+    margin-top: 3%;
+    display: flex;
+    align-items: center;
+    transition: background-color, color 0.5s;
+    text-decoration: none;
+}
+
+.menu-item:hover
+{
+    background-color: #b0b6c8 !important;
+    color:#000 !important;
+}
+article, header, footer
+{
+    width:85%;
+    position: relative;
+    left:15%;
+}
+
+.image-container
+{
+    float:right;
+    width: 25%;
+}
+img
+{
+    width:100%;
+}
+header
+{
+    text-align: center;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+p > a
+{
+    color:#485167;
+}
+.italic
+{
+    font-style:italic;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.citation
+{
+    vertical-align: super;
+}
+
+code
+{
+    display: block;
+    background-color:#2b303d;
+    color:#fff;
+}
