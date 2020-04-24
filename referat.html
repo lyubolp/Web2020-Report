@@ -31,8 +31,38 @@
     </div>
 
     <div id="menu-item-6" class="w3-container w3-theme menu-item">
+        <a href="#section5.1">Превод от C++</a>
+    </div>
+
+    <div id="menu-item-7" class="w3-container w3-theme menu-item">
         <a href="#section6">Демо</a>
     </div>
+
+    <div id="menu-item-8" class="w3-container w3-theme menu-item">
+        <a href="#section6.1">Настройки на Emscripten</a>
+    </div>
+
+    <div id="menu-item-9" class="w3-container w3-theme menu-item">
+        <a href="#section6.2">Създаване на HTML и JavaScript</a>
+    </div>
+
+    <div id="menu-item-10" class="w3-container w3-theme menu-item">
+        <a href="#section6.3">Изпълнение на кода</a>
+    </div>
+
+    <div id="menu-item-11" class="w3-container w3-theme menu-item">
+        <a href="#section6.4">Използване на собствен HTML шаблон</a>
+    </div>
+
+    <div id="menu-item-12" class="w3-container w3-theme menu-item">
+        <a href="#section6.5">Извикване на функции дефинирани в C</a>
+    </div>
+
+    <div id="menu-item-13" class="w3-container w3-theme menu-item">
+        <a href="#section7">Източници</a>
+    </div>
+
+
 </div>
 <header class="w3-container w3-theme">
     <h1>WebAssembly - основи и примери</h1>
@@ -40,7 +70,8 @@
 <article class="w3-container w3-theme-l4">
     <section class="w3-panel" id="section1">
         <h2>Какво е WebAssembly ?</h2>
-        <p>WebAssembly (накратко Wasm) е <span class="italic">безопасен, portable, език от ниско ниво</span>, направен с
+        <p>WebAssembly (накратко Wasm) е <span class="italic">безопасен, портативен език от ниско ниво</span>, направен
+            с
             цел ефикастно изпълнение
             и компактно репрезентиране. Главната му цел е да постигне висока производителност при Уеб приложения,
             без да прави някакви специфични за Уеб предположения, или пък да предлага специфични за Уеб функционалности,
@@ -51,16 +82,19 @@
     </section>
 
     <section class="w3-panel">
-        <p>WebAssembly е голяма стъпка напред за уеб платформата — предоставя начин да се изпълнява код написан на различни
+        <p>WebAssembly е голяма стъпка напред за уеб платформата — предоставя начин да се изпълнява код написан на
+            различни
             езици върху уеб с почти никакво забавяне в скоростта, с клиентски приложения вървящи върху уеб.</p>
 
         <p>WebAssembly е създаден да допълва и да върви заедно с JavaScript — чрез използване на WebAssembly JavaScript
-        API, може да се зареждат WebAssembly модули в JavaScript приложение и да се споделят функционалности между двата
-        езика. Това позволява да се възползвате от производителността и силата на WebAssembly и експресивността и
-        гъвкавостта на JavaScript в едно и също приложение, дори и да не знаете как да пишете WebAssembly код.
+            API, може да се зареждат WebAssembly модули в JavaScript приложение и да се споделят функционалности между
+            двата
+            езика. Това позволява да се възползвате от производителността и силата на WebAssembly и експресивността и
+            гъвкавостта на JavaScript в едно и също приложение, дори и да не знаете как да пишете WebAssembly код.
             <a href="#citation2" class="citation">[2]</a></p>
         <p>WebAssembly е нов тип код, който може да бъде изпълняван в съвременните уеб браузъри, и предлага нови
-        функционалности и голям напредък в производителността. Езикът няма за цел да бъде писан директно, а да бъде като
+            функционалности и голям напредък в производителността. Езикът няма за цел да бъде писан директно, а да бъде
+            като
             ефективен продукт от компилацията на други езици от ниско ниво като C, C++, Rust и други.</p>
     </section>
 
@@ -180,9 +214,10 @@
             <li>
                 <span class="bold">Стойности:</span>
                 <p>
-                    WebAssembly поддържа само четири базови типа стойности. Това са цели числа и [IEEE
-                    754-2019](https://ieeexplore.ieee.org/document/8766229) числа, всяко с дължина 32 или 64 бита. 32
-                    битовите цели числа също служат за булеви стойности и за адреси в паметта. Стандартните операции са
+                    WebAssembly поддържа само четири базови типа стойности. Това са цели числа и
+                    <a href="https://ieeexplore.ieee.org/document/8766229" target="_blank">IEEE 754-2019 </a>
+                    числа, всяко с дължина 32 или 64 бита. 32 битовите цели числа също служат за булеви стойности и за
+                    адреси в паметта. Стандартните операции са
                     възможни върху тези типове, включително и пълната матрица от преобразувания между тях. Няма
                     разграничение между целочисления тип със знак и без знак. Вместо това, целите числа са
                     интерпретирани от съответните операции или като такива без знак, или такива със знак.
@@ -271,7 +306,7 @@
             </li>
         </ul>
 
-        <h3>Превод от C/C++</h3>
+        <h3 id="section5.1">Превод от C/C++</h3>
         <p>Две от многото възможности за създаване WASM код, са онлайн wasm асемблери или <a
                 href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Emscripten"
                 target="_blank">Emscripten </a>. Има няколко онлайн асемблери:</p>
@@ -280,6 +315,44 @@
             <li><a href="https://anonyco.github.io/WasmFiddlePlusPlus/" target="_blank">WasmFiddle++</a></li>
             <li><a href="https://mbebenita.github.io/WasmExplorer/" target="_blank">WasmExplorer</a></li>
         </ul>
+        <p>
+            Ще разгледаме накратко работата с <a href="https://wasdk.github.io/WasmFiddle/"
+                                                 target="_blank">WasmFiddle</a>.
+        </p>
+
+        <a href="img/wasm_fiddle1.png" target="_blank">
+            <div class="w3-card-4 image-container">
+                <img src="img/wasm_fiddle1.png" alt="Начален екран на WasmFiddle"/>
+                <div class="w3-container w3-center">
+                    <p>Ето така изглежда началният екран на WasmFiddle (щракнете, за да увеличите снимката).</p>
+                </div>
+            </div>
+        </a>
+        <p>
+            В началният екран на WasmFiddle имаме две полета - едно за C код, другото е за JavaScript код. Ще напишем
+            примерна програма, която събира две променливи, и отпечатва резултата на екрана.
+        </p>
+        <a href="img/wasm_fiddle2.png" target="_blank">
+            <div class="w3-card-4 image-container">
+                <img src="img/wasm_fiddle2.png" alt="Кодът на C"/>
+                <div class="w3-container w3-center">
+                    <p>C кодът, който събира две променливи (щракнете, за да увеличите снимката).</p>
+                </div>
+            </div>
+        </a>
+        <p>
+            С бутона 'Build' компилираме кодът на C и на Javascript, а с бутон 'Run' го изкпълняваме.
+        </p>
+
+        <a href="img/wasm_fiddle3.png" target="_blank">
+            <div class="w3-card-4 image-container">
+                <img src="img/wasm_fiddle3.png" alt="Резултатът"/>
+                <div class="w3-container w3-center">
+                    <p>Резултатът от изпълнението на кода (щракнете, за да увеличите снимката).</p>
+                </div>
+            </div>
+        </a>
+
         <p>
             Те са добри ресурси за хора, които се опитват да открият от къде да започнат с WebAssembly. Проблемът с тях
             е, че липсват някои инструменти и оптимизациите на Emscripten.
@@ -372,37 +445,78 @@
 
     <section class="w3-panel" id="section6">
         <h2>Демо</h2>
-        <h3>Настройки на Emscripten</h3>
-        <p>Трябва първо да се настрои необходимите инструменти.
-            Свалете Emscripten SDK, следвайки тези <a href="https://emscripten.org/docs/getting_started/downloads.html"
-                                                      target="_blank">инструкции</a>.
-            След като средата е инсталирана, нека разгледаме как може да компилираме C код с Emscripten. Има много
-            различни опции при компилиране, но тук ще разгледаме две:</p>
-        <ul>
-            <li>Компилиране до wasm и създаването на необходимия HTML код, заедно с необходимия помощен JavaScript,
-                необходими за изпълнението на wasm в уеб среда.
-            </li>
-            <li>Компилираме до wasm и създаване само на JavaScript кода.</li>
-        </ul>
-        <p>Ще разгледаме двата варианта по-долу.</p>
+        <h3 id="section6.1">Настройки на Emscripten</h3>
+        <p>Трябва първо да се настрои необходимите инструменти. <br/>
+            По-долу ще бъде използвана операционната система Linux. За инсталация и работа под Windows/macOS
+            <a href="https://emscripten.org/docs/getting_started/downloads.html"
+               target="_blank"> цъкнете тук </a>
+        </p>
+        <a href="img/install_0.png" target="_blank">
+            <div class="w3-card-4 image-container">
+                <img src="img/install_0.png" alt="Стъпка 0"/>
+                <div class="w3-container w3-center">
+                    <p>Инсталираме необходимите пакети чрез следните команди. (щракнете, за да увеличите снимката)</p>
+                </div>
+            </div>
+        </a>
 
-        <h3>Създаване на HTML и JavaScript</h3>
+        <a href="img/install_1.png" target="_blank">
+            <div class="w3-card-4 image-container">
+                <img src="img/install_1.png" alt="Стъпка 1"/>
+                <div class="w3-container w3-center">
+                    <p>Клонираме последната версия на Emscripten от Github хранилището и влизаме в
+                        новосъздадената директория. (щракнете, за да увеличите снимката)</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="img/install_2.png" target="_blank">
+            <div class="w3-card-4 image-container">
+                <img src="img/install_2.png" alt="Стъпка 2"/>
+                <div class="w3-container w3-center">
+                    <p>Инсталираме последната версия на Emscripten и я активираме за текущия потребител (щракнете, за да увеличите снимката).</p>
+                </div>
+            </div>
+        </a>
+
+
+        <h3 id="section6.2">Създаване на HTML и JavaScript</h3>
         <p>Това е най-простия случай, където emscripten генерира всичко необходимо за изпълнението на WebAssembly в
             браузъра.</p>
         <ol>
             <li>
-                Първо трябва да имаме C код който да компилираме. Файлът `hello.c` изглежда по следният начин:<br/>
-                <code>
-                    #include &lt;stdio.h&gt; <br/>
-                    int main(int argc, char ** argv) {<br/>
-                    printf("Hello World\n"); <br/>
-                    }<br/>
-                </code>
+
+                <a href="img/bash_example_1.png" target="_blank">
+                    <div class="w3-card-4 image-container">
+                        <img src="img/bash_example_1.png" alt="Навигация"/>
+                        <div class="w3-container w3-center">
+                            <p>Навигираме до следната поддиректория, намираща се в emsdk. Там създаваме и подпапка demo</p>
+                        </div>
+                    </div>
+                </a>
+                <br/>
+                <p>Първо трябва да имаме C код който да компилираме. Файлът `demo/hello.c` изглежда по следният начин:</p><br/>
+                <a href="img/c_example_1.png" target="_blank">
+                    <div class="w3-card-4 image-container">
+                        <img src="img/c_example_1.png" alt="C пример 1"/>
+                        <div class="w3-container w3-center">
+                            <p>C кодът, който ще използваме (щракнете, за да увеличите снимката).</p>
+                        </div>
+                    </div>
+                </a>
+                <br/>
             </li>
             <li>
-                През терминала навигираме до директорията, в която се намира `hello.c` и изпълняваме следната команда:
+                От директорията `emsdk/upstream/emscripten` изпълняваме следната команда:
                 <br/>
-                <code>emcc hello.c -s WASM=1 -o hello.html</code>
+                <a href="img/bash_example_2.png" target="_blank">
+                    <div class="w3-card-4 image-container">
+                        <img src="img/bash_example_2.png" alt="Код за компилиране"/>
+                        <div class="w3-container w3-center">
+                            <p>C кодът, който ще използваме (щракнете, за да увеличите снимката).</p>
+                        </div>
+                    </div>
+                </a>
             </li>
         </ol>
 
@@ -427,39 +541,72 @@
             </li>
         </ul>
 
-        <h3>Изпълнение на кода</h3>
+        <h3 id="section6.3">Изпълнение на кода</h3>
         <p>
-            Единственото, което трябва да се направи сега, е да заредим получения `hello.html` файл, в браузър, който
+            Единственото, което трябва да се направи сега, е да заредим получения `hello.html` файл на уеб сървър, в браузър, който
             поддържа WebAssembly. Тази функционалност е включена по подразбиране в следните браузъри: Firefox 52+ и
             Chrome 57+/най-нова версия на Opera (възможно е да се изпълнява wasm код в Firefox 47+ чрез включване на
             `javascript.options.wasm` флага в *about:config*, или в Chrome (51+) и Opera (38+) чрез *chrome://flags* и
             включването на *Experimental WebAssembly* флага.)
         </p>
-        <p>Ако всичко е проработило по план, би трябвало на екрана да се появи "Hello world" !</p>
+        <p>
+            Лесен начин да създадем локален уеб сървър е чрез използването на python командата.
+        </p>
 
+        <p>След успешното стартиране, в подходящ браузър, навигирайте до http://localhost:8080/hello.html</p>
+        <a href="img/bash_example_3.png" target="_blank">
+            <div class="w3-card-4 image-container">
+                <img src="img/bash_example_3.png" alt="Код за компилиране"/>
+                <div class="w3-container w3-center">
+                    <p>Web сървър чрез Python</p>
+                </div>
+            </div>
+        </a>
 
-        <h3>Използване на собствен HTML шаблон</h3>
+        <p>
+            Ако всичко е проработило по план, би трябвало на екрана да се появи "Hello world" !
+        </p>
+        <p><a href="demo/hello.html" target="_blank">Натисни тук, за стартиране на демото</a></p>
+
+        <a href="img/wasm_result_1.png" target="_blank">
+            <div class="w3-card-4 image-container">
+                <img src="img/wasm_result_1.png" alt="Код за компилиране"/>
+                <div class="w3-container w3-center">
+                    <p>Резултат от стартирания код</p>
+                </div>
+            </div>
+        </a>
+
+        <h3 id="section6.4">Използване на собствен HTML шаблон</h3>
         <p>Можем да използваме собствен HTML шаблон. Това става по следният начин:</p>
 
         <ol>
             <li>
-                В нова директория, създаваме файл `hello2.c` със следния код в него:
-                <code>
-                    <pre>
-                        #include &lt;stdio.h&gt;
-                        int main(int argc, char ** argv) {
-                            printf("Hello World\n");
-                        }
-                    </pre>
-                </code>
+                В директорията demo, създаваме файл `hello2.c` със следния код в него:
+                <a href="img/c_example_1.png" target="_blank">
+                    <div class="w3-card-4 image-container">
+                        <img src="img/c_example_1.png" alt="Код за компилиране"/>
+                        <div class="w3-container w3-center">
+                            <p>hello2.c</p>
+                        </div>
+                    </div>
+                </a>
             </li>
+            <br/>
             <li>Потърсете файла `shell_minimal.html`, който се намира в папката emsdk. Копирайте го в под-директория с
                 име `html_template` във вашата нова директория
             </li>
             <li>
-                От прозореца, в който е отворен Emscripten средата, навигирайте към новосъздадената директория и
-                изъплнете следната команда:
-                <code>emcc -o hello2.html hello2.c -O3 -s WASM=1 --shell-file html_template/shell_minimal.html</code>
+                <a href="img/bash_example_4.png" target="_blank">
+                    <div class="w3-card-4 image-container">
+                        <img src="img/bash_example_4.png" alt="Код за компилиране"/>
+                        <div class="w3-container w3-center">
+                            <p>От прозореца, в който е отворен Emscripten средата, навигирайте към новосъздадената директория и
+                                изъплнете следната команда:</p>
+                        </div>
+                    </div>
+                </a>
+
                 <p>Параметрите се различват малко спрямо предишния път:</p>
 
                 <ul>
@@ -475,33 +622,22 @@
             <li>Остава само да пуснем примера. Стартираме `hello2.html` в браузъра.</li>
         </ol>
 
-        <h3>Извикване на функции дефинирани в C</h3>
+        <h3 id="section6.5">Извикване на функции дефинирани в C</h3>
         <p>
             Ако имаме функция, дефинирана в C кода ни, която искаме да извикаме от JavaScript, можем да използваме
             `ccall()` функцията от Emscripten, заедно с `EMSCRIPTEN_KEEPALIVE` декларацията.
             Ще направим файл`hello3.c` в нова директория:
         </p>
 
-        <code>
-            #include &lt;stdio.h&gt;
-            #include &lt;emscripten/emscripten.h&gt;
 
-            int main(int argc, char ** argv) {
-            printf("Hello World\n");
-            }
+        <a href="img/c_example_2.png" target="_blank">
+            <div class="w3-card-4 image-container">
+                <img src="img/c_example_2.png" alt="Код за компилиране"/>
+                <div class="w3-container w3-center">
+                </div>
+            </div>
+        </a>
 
-            #ifdef __cplusplus
-            extern "C" {
-            #endif
-
-            void EMSCRIPTEN_KEEPALIVE myFunction(int argc, char ** argv) {
-            printf("MyFunction Called\n");
-            }
-
-            #ifdef __cplusplus
-            }
-            #endif
-        </code>
 
 
         <p>
@@ -514,14 +650,18 @@
             Сега добавяме `html_template/shell_minimal.html` в текущата директория, за удобство.
         </p>
         <p>
-            Нека изпълним компилационната стъпка отново. От директорията в която сме, компилираме нашия C код със
-            следата команда:
+
         </p>
 
-        <code>
-            emcc -o hello3.html hello3.c -O3 -s WASM=1 --shell-file html_template/shell_minimal.html -s
-            NO_EXIT_RUNTIME=1 -s "EXTRA_EXPORTED_RUNTIME_METHODS=['ccall']"
-        </code>
+        <a href="img/bash_example_5.png" target="_blank">
+            <div class="w3-card-4 image-container">
+                <img src="img/bash_example_5.png" alt="Код за компилиране"/>
+                <div class="w3-container w3-center">
+                    <p>Нека изпълним компилационната стъпка отново. От директорията в която сме, компилираме нашия C код със
+                        следата команда:</p>
+                </div>
+            </div>
+        </a>
 
 
         <p>Ако заредим този пример в браузъра, ще видим същото нещо като преди.</p>
@@ -529,30 +669,30 @@
         <p>Сега трябва да изпълним нашата нова функция `myFunction()` от JavaScript. Първо, отваряме `hello3.html` файл
             в текстов редактор. Добавяме следният `button` елемент.</p>
 
-        <code>
-            &lt;button class="mybutton"&gt; Run myFunction &lt;/button&gt;
-        </code>
+        <a href="img/html_example_1.png" target="_blank">
+            <div class="w3-card-4 image-container">
+                <img src="img/html_example_1.png" alt="Код за компилиране"/>
+                <div class="w3-container w3-center">
+                    <p>Този код добавя бутон</p>
+                </div>
+            </div>
+        </a>
 
         <p>И съответният JavaScript код: </p>
 
-        <code>
-            <pre>document.querySelector('.mybutton')
-    .addEventListener('click', function() {
-        alert('check console');
-        var result = Module.ccall(
-            'myFunction',	// name of C function
-            null,	// return type
-            null,	// argument types
-            null	// arguments
-        );
-    });</pre>
-        </code>
+        <a href="img/javascript_example_1.png" target="_blank">
+            <div class="w3-card-4 image-container">
+                <img src="img/javascript_example_1.png" alt="Код за компилиране"/>
+                <div class="w3-container w3-center">
+                </div>
+            </div>
+        </a>
 
         <p><a href="#citation5" class="citation">[5]</a></p>
     </section>
 
 </article>
-<footer class="w3-container w3-theme">
+<footer class="w3-container w3-theme" id="section7">
     Цитати:
     <ol>
         <li>
