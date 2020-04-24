@@ -59,8 +59,9 @@ article, header, footer
 
 .image-container
 {
-    float:right;
-    width: 25%;
+    position: relative;
+    left: 30%;
+    width: 35%;
 }
 img
 {
